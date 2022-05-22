@@ -6,3 +6,4 @@ setuptools_scm
 tox
 wheel
 nuitka
+pdoc
