@@ -1,34 +1,47 @@
 from subprocess import Popen, PIPE
 from .readline import ReadlineThread
+from typing import Callable
 
 
-class Run:
-    def __init__(self, command, stdout_callback, stderr_callback, shell=False):
-        self._command = command
-        self._stdout_callback = stdout_callback
-        self._stderr_callback = stderr_callback
-        self._shell = shell
+def Run(
+    command: str,
+    stdout_callback: Callable[[str], None] = None,
+    stderr_callback: Callable[[str], None] = None,
+    shell: bool = False,
+) -> int:
+    """
 
-    def run(self):
+    - `command` contains the command to be execute
+    - `stdout_callback` is a function to be called when a line is received from the process stdout
+    - `stderr_callback` is a function to be called when a line is received from the process stderr
 
-        with Popen(
-            self._command,
-            stdout=PIPE,
-            stderr=PIPE,
-            text=True,
-            shell=self._shell,
-            universal_newlines=True,
-            bufsize=1,
-        ) as proc:
+    Returns: The exit code of the process execution
+    """
 
-            stdout_thread = ReadlineThread(proc.stdout, self._stdout_callback)
+    with Popen(
+        command,
+        stdout=PIPE,
+        stderr=PIPE,
+        text=True,
+        shell=shell,
+        universal_newlines=True,
+        bufsize=1,
+    ) as proc:
+
+        if stdout_callback:
+            stdout_thread = ReadlineThread(proc.stdout, stdout_callback)
             stdout_thread.start()
 
-            stderr_thread = ReadlineThread(proc.stderr, self._stderr_callback)
+        if stderr_callback:
+            stderr_thread = ReadlineThread(proc.stderr, stderr_callback)
             stderr_thread.start()
 
-            proc.wait()
+        proc.wait()
 
+        if stdout_callback:
             stdout_thread.join()
+
+        if stderr_callback:
             stderr_thread.join()
-            return proc.returncode
+
+        return proc.returncode

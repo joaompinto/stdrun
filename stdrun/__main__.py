@@ -8,19 +8,18 @@ RESET = "\033[0m"
 
 
 def stdout_print(line):
-    print(line)
+    print(line, end="")
 
 
 def stderr_print(line):
-    print(f"{BOLD}{RED}{line}{RESET}", file=sys.stderr)
+    print(f"{BOLD}{RED}{line}{RESET}", end="", file=sys.stderr)
 
 
 def main():
     parser = ArgumentParser()
     parser.add_argument("command", nargs="+", help="command to be executed")
     args = parser.parse_args()
-    process = Run(args.command, stdout_print, stderr_print, shell=True)
-    exit_code = process.run()
+    exit_code = Run(args.command, stdout_print, stderr_print, shell=True)
     print(f"Exit code: {exit_code}")
 
 
