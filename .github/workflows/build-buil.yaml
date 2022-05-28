@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: joaompinto/build-python-static-bin-action@master
+        uses: joaompinto/build-python-static-bin-action@v1
         with:
           python_package: 'stdrun'
       # Use the output from the `hello` step
