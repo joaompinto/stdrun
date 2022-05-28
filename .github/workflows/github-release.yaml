@@ -1,4 +1,4 @@
-name: New Version Release
+name: New Version Release to Github
 
 on:
   push:
@@ -31,7 +31,7 @@ jobs:
         run: pip install -r requirements-dev.txt
 
       - name: Build the binary
-        run: nuitka3 --onefile stdrun
+        run: nuitka3 --assume-yes-for-downloads --onefile stdrun
 
       - name: Create GitHub Release
         id: create_release
