@@ -1,6 +1,7 @@
 import sys
 from argparse import ArgumentParser
 from stdrun import Run
+import colorama
 
 RED = "\033[0;31m"
 BOLD = "\033[1m"
@@ -16,6 +17,7 @@ def stderr_print(line):
 
 
 def main():
+    colorama.init()
     parser = ArgumentParser()
     parser.add_argument("command", nargs="+", help="command to be executed")
     args = parser.parse_args()
