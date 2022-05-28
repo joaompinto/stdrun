@@ -12,6 +12,7 @@ jobs:
       - name: Create folder
         run: |
           env
+          pwd
           mkdir test
           ls test
       - name: Hello world action step
