@@ -22,16 +22,14 @@ jobs:
         run: |
             echo "v${{ steps.semver_parser.outputs.fullversion }}"
 
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build the static binary
+        uses: joaompinto/build-python-static-bin-action@v1
         with:
-          python-version: 3.7
-
-      - name: Clean Install Dependencies
-        run: pip install -r requirements-dev.txt
-
-      - name: Build the binary
-        run: nuitka3 --assume-yes-for-downloads --onefile stdrun
+          python_package: 'stdrun'
 
       - name: Create GitHub Release
         id: create_release
@@ -50,6 +48,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{github.workspace}}/stdrun.bin
-          asset_name: stdrun.bin
+          asset_path: ${{github.workspace}}/stdrun.dist/stdrun
+          asset_name: stdrun
           asset_content_type: application/x-executable
