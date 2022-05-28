@@ -1,3 +1,4 @@
+name: Build Linux static binary
 on: [push]
 
 jobs:
