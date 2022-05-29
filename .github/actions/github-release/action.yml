@@ -18,8 +18,13 @@ runs:
       shell: bash
 
     - uses: actions/create-release@v1.0.0
-      with:
+      env:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{ github.ref }}
+        draft: false
+        prerelease: false
 
     # - name: Create GitHub Release
     #   shell: bash
