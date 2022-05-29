@@ -30,7 +30,7 @@ runs:
     - uses: svenstaro/upload-release-action@2.2.1
       with:
         repo_token: ${{ github.token }}
-        tag_name: ${{ github.ref }}
+        tag: ${{ github.ref }}
         file_glob: true
         file: dist/*.whl
     # - name: Create GitHub Release
