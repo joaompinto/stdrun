@@ -1,0 +1,12 @@
+on:
+  workflow_run:
+    workflows: ["Build all artifacts"]
+    types:
+      - completed
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo go for a release

@@ -10,10 +10,17 @@ jobs:
     uses: ./.github/workflows/linux-build.yaml
   wheels:
     uses: ./.github/workflows/wheels-build.yaml
+  github:
+    uses: ./.github/workflows/github-release.yaml
 
-  full_release:
+  build_all:
     runs-on: ubuntu-20.04
     needs: [wheels, linux, windows]
+
+  notify:
+    needs: build_all
+    runs-on: ubuntu-latest
+
     steps:
 
       - name: Download a single artifact
@@ -25,14 +32,3 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: linux-binary
-
-      - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          draft: false
-          prerelease: false
