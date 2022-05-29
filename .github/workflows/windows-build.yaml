@@ -1,10 +1,5 @@
 name: windows-binary-build
-on:
-  workflow_call:
-      inputs:
-        python_package:
-          required: true
-          type: string
+on: workflow_call
 
 jobs:
   create_release:
@@ -18,4 +13,4 @@ jobs:
           python-version: '3.10'
           architecture: x64
       - run: pip install Nuitka zstandard
-      - run: python -m nuitka --assume-yes-for-downloads --onefile ${{ inputs.python_package }}
+      - run: python -m nuitka --assume-yes-for-downloads --onefile ${{ github.event.repository.name }}
