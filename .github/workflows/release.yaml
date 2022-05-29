@@ -1,5 +1,7 @@
 name: Regular release
-on: push
+on:
+  push:
+  workflow_call:
 
 jobs:
   windows:
@@ -13,11 +15,24 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [wheels, linux, windows]
     steps:
+
       - name: Download a single artifact
         uses: actions/download-artifact@v3
         with:
           name: windows-binary
+
       - name: Download a single artifact
         uses: actions/download-artifact@v3
         with:
           name: linux-binary
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          draft: false
+          prerelease: false
