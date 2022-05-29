@@ -15,9 +15,9 @@ jobs:
         run: python -m pip install --upgrade pip setuptools wheel
 
       - name: Build a binary wheel and a source tarball
-        run: python setup.py sdist bdist_wheel
-
-      - name: tar -czvf dist.tar.gz dist/
+        run: |
+          python setup.py sdist bdist_wheel
+          tar -czvf dist.tar.gz dist/
 
       - name: Archive the resulting wheels
         uses: actions/upload-artifact@v3
