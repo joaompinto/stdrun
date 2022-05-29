@@ -1,4 +1,4 @@
-name: "Deploy Frontend to S3"
+name: "Create GitHub Release"
 description: "Builds and deploys the React frontend to AWS S3"
 
 runs:
@@ -54,4 +54,4 @@ runs:
       with:
         repo_token: ${{ github.token }}
         tag: ${{ github.ref }}
-        file: linux-binary/${{ github.event.repository.name }}.bin
+        file: linux-binary/${{ github.event.repository.name }}
