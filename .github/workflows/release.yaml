@@ -2,16 +2,16 @@ name: Regular release
 on: push
 
 jobs:
-  windows-build:
+  windows:
     uses: ./.github/workflows/windows-build.yaml
-  linux-build:
+  linux:
     uses: ./.github/workflows/linux-build.yaml
-  wheels-build:
+  wheels:
     uses: ./.github/workflows/wheels-build.yaml
 
   full_release:
     runs-on: ubuntu-20.04
-    needs: [windows-build, linux-build, wheels-build]
+    needs: [wheels, linux, windows]
     steps:
       - name: Download a single artifact
         uses: actions/download-artifact@v3
