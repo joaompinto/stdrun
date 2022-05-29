@@ -24,9 +24,6 @@ runs:
         name: linux-binary
         path: linux-binary
 
-    - run: ls -R
-      shell: bash
-
     - uses: actions/create-release@v1.0.0
       id: create_release
       env:
