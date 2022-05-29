@@ -22,7 +22,7 @@ runs:
       uses: actions/download-artifact@v3
       with:
         name: linux-binary
-        path: ${{ github.event.repository.name }}.bin
+        path: linux-binary
 
     - run: ls -R
       shell: bash
@@ -54,4 +54,4 @@ runs:
       with:
         repo_token: ${{ github.token }}
         tag: ${{ github.ref }}
-        file: ${{ github.event.repository.name }}/${{ github.event.repository.name }}.bin
+        file: linux-binary/${{ github.event.repository.name }}.bin
