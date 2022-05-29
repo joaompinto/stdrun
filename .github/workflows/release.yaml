@@ -10,8 +10,3 @@ jobs:
     needs: [windows-build]
     steps:
       - run: echo ok
-
-  main: # github requires a non dependent job
-    runs-on: ubuntu-20.04
-    steps:
-      - run: echo ok
