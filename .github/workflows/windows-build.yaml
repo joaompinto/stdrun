@@ -1,8 +1,9 @@
-name: Create Windows binary
+name: windows-binary-build
 on: workflow_call
 
 jobs:
   create_release:
+    name: Create Windows binary
     runs-on: windows-2019
     steps:
       - uses: actions/checkout@v3
