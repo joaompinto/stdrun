@@ -12,6 +12,10 @@ runs:
     - run: tar xvf dist.tar.gz
       shell: bash
 
+    - uses: actions/create-release@v1.0.0
+      with:
+        GITHUB_TOKEN: ${{ input.GITHUB_TOKEN }}
+
     # - name: Create GitHub Release
     #   shell: bash
     #   uses: actions/create-release@v1.0.0
