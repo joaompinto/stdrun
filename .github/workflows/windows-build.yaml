@@ -1,5 +1,5 @@
 name: Win32Sample GitHub Release
-  on: push
+on: push
 
 jobs:
   create_release:
