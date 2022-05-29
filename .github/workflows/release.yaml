@@ -6,10 +6,12 @@ jobs:
     uses: ./.github/workflows/windows-build.yaml
   linux-build:
     uses: ./.github/workflows/linux-build.yaml
+  wheels-build:
+    uses: ./.github/workflows/wheels-build.yaml
 
   full_release:
     runs-on: ubuntu-20.04
-    needs: [windows-build, linux-build]
+    needs: [windows-build, linux-build, wheels-build]
     steps:
       - name: Download a single artifact
         uses: actions/download-artifact@v3
