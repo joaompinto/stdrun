@@ -1,0 +1,14 @@
+name: "Deploy Frontend to S3"
+description: "Builds and deploys the React frontend to AWS S3"
+runs:
+  using: "composite"
+  steps:
+    - name: Download a single artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: windows-binary
+
+    - name: Download a single artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: linux-binary
