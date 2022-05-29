@@ -1,0 +1,6 @@
+name: Regular release
+on: push
+
+jobs:
+  build-windows:
+    needs: [windows-build]
