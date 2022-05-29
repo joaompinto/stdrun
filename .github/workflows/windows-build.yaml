@@ -1,4 +1,4 @@
-name: Windows binary build
+name: windows-binary-build
 on:
   workflow_call:
       inputs:
@@ -8,7 +8,6 @@ on:
 
 jobs:
   create_release:
-    id: windows-build
     name: Create Windows binary
     runs-on: windows-2019
     steps:
