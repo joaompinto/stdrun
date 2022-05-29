@@ -17,5 +17,13 @@ jobs:
     needs: [wheels, linux, windows]
     steps:
       - uses: actions/checkout@v2
-      - name: Deploy frontend
+      - name: Create GitHub Release
         uses: ./.github/actions/github-release
+
+  create_pypi_release:
+    runs-on: ubuntu-20.04
+    needs: create_github_release
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create Pypi Release
+        uses: ./.github/actions/pipy-release
