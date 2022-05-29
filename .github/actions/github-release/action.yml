@@ -5,10 +5,20 @@ runs:
   using: "composite"
   steps:
 
-    - name: Download a single artifact
+    - name: Download the wheels artifact
       uses: actions/download-artifact@v3
       with:
         name: wheels-data
+
+    - name: Download the windows exe
+      uses: actions/download-artifact@v3
+      with:
+        name: windows-binary
+
+    - name: Download the linux bin
+      uses: actions/download-artifact@v3
+      with:
+        name: linux-binary
 
     - run: tar xvf dist.tar.gz
       shell: bash
@@ -30,13 +40,15 @@ runs:
         file_glob: true
         file: dist/*.whl
 
+    - uses: svenstaro/upload-release-action@2.2.1
+      with:
+        repo_token: ${{ github.token }}
+        tag: ${{ github.ref }}
+        file: ${{ github.event.repository.name }}.exe
 
-    # - name: Download a single artifact
-    #   uses: actions/download-artifact@v3
-    #   with:
-    #     name: windows-binary
-
-    # - name: Download a single artifact
-    #   uses: actions/download-artifact@v3
-    #   with:
-    #     name: linux-binary
+    - uses: svenstaro/upload-release-action@2.2.1
+      with:
+        repo_token: ${{ github.token }}
+        tag: ${{ github.ref }}
+        file: ${{ github.event.repository.name }}.dist/${{ github.event.repository.name }}
+        asset_name: ${{ github.event.repository.name }}
