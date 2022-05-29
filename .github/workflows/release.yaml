@@ -2,11 +2,12 @@ name: Regular release
 on: push
 
 jobs:
-  windows-build: uses: ./.github/workflows/windows-build.yml
+  windows-build:
+    uses: ./.github/workflows/windows-build.yml
 
   build-windows:
     runs-on: ubuntu-20.04
-    needs: [windows-binary-build]
+    needs: [windows-build]
     steps:
       - run: echo ok
 
