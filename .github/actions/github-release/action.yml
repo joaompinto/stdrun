@@ -27,7 +27,7 @@ runs:
         draft: false
         prerelease: false
 
-    - uses: svenstaro/upload-release-action@v2
+    - uses: svenstaro/upload-release-action@2.2.1
       with:
         file_glob: true
         file: dist/*.whl
