@@ -2,7 +2,7 @@ name: Create Windows binary
 on: workflow_call
 
 jobs:
-  create_release:
+  create_exe:
     runs-on: windows-2019
     steps:
       - uses: actions/checkout@v3
