@@ -11,7 +11,8 @@ jobs:
         with:
           python-version: '3.10'
           architecture: x64
-      - run: pip install ordered-set wheel zstandard Nuitka
+      - run: pip install ordered-set wheel zstandard
+      - run: pip install Nuitka
       - run: python -m nuitka --assume-yes-for-downloads --follow-imports --onefile ${{ github.event.repository.name }}
       - run: ls -ltr stdrun.build
       - name: Archive the resulting executable
