@@ -14,4 +14,4 @@ jobs:
           architecture: x64
       - run: |
           pip install Nuitka
-          python -m nuitka --assume-yes-for-downloads --onefile stdrun
+          python -m nuitka --debug --assume-yes-for-downloads --onefile stdrun
