@@ -16,6 +16,8 @@ jobs:
   build_all:
     runs-on: ubuntu-20.04
     needs: [wheels, linux, windows]
+    steps:
+      - run: done
 
   notify:
     needs: build_all
