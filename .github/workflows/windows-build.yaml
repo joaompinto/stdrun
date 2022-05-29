@@ -1,4 +1,4 @@
-name: Create Windows binary
+name: Windows Executable (x64)
 on: workflow_call
 
 jobs:

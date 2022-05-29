@@ -1,4 +1,4 @@
-name: Create Linux Static  binary
+name: Linux Static Binary (x64)
 on: workflow_call
 
 jobs:
