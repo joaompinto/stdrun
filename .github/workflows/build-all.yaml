@@ -20,7 +20,7 @@ jobs:
       - name: Deploy frontend
         uses: ./.github/actions/github-release
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # notify:
   #   needs: build_all
