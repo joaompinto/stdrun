@@ -1,7 +1,7 @@
 name: "Deploy Frontend to S3"
 description: "Builds and deploys the React frontend to AWS S3"
 inputs:
-  GITHUB_TOKEN:
+  github_token:
     required: true
     description: "The github token"
 
@@ -19,7 +19,7 @@ runs:
 
     - uses: actions/create-release@v1.0.0
       env:
-        GITHUB_TOKEN: ${{ inputs.github-token }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}
       with:
         tag_name: ${{ github.ref }}
         release_name: ${{ github.ref }}
