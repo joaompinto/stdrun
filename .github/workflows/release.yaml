@@ -5,7 +5,7 @@ jobs:
   windows-build:
     uses: ./.github/workflows/windows-build.yaml
 
-  build-windows:
+  full release:
     runs-on: ubuntu-20.04
     needs: [windows-build]
     steps:

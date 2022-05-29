@@ -14,3 +14,8 @@ jobs:
           architecture: x64
       - run: pip install Nuitka zstandard
       - run: python -m nuitka --assume-yes-for-downloads --onefile ${{ github.event.repository.name }}
+      - name: Archive the resulting executable
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-binary
+          path: ${{ github.event.repository.name }}.exe
