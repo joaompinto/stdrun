@@ -24,8 +24,8 @@ runs:
         name: linux-binary
         path: ${{ github.event.repository.name }}.bin
 
-    - run: tar xvf dist.tar.gz
-      shell: ls -R
+    - run: ls -R
+      shell: bash
 
     - uses: actions/create-release@v1.0.0
       id: create_release
