@@ -23,5 +23,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: wheels-data
-          path: dist.tar
+          path: dist.tar.gz
           retention-days: 1
