@@ -4,12 +4,18 @@ on: push
 jobs:
   windows-build:
     uses: ./.github/workflows/windows-build.yaml
+  linux-build:
+    uses: ./.github/workflows/linux-build.yaml
 
   full_release:
     runs-on: ubuntu-20.04
-    needs: [windows-build]
+    needs: [windows-build, linux-build]
     steps:
       - name: Download a single artifact
         uses: actions/download-artifact@v3
         with:
           name: windows-binary
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: linux-binary
