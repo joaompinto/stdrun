@@ -9,6 +9,20 @@ runs:
       with:
         name: wheels-data
 
+    - run: tar xvf dist.tar.gz
+      shell: bash
+
+    - name: Create GitHub Release
+      shell: bash
+      uses: actions/create-release@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{ github.ref }}
+        draft: false
+        prerelease: false
+
     # - name: Download a single artifact
     #   uses: actions/download-artifact@v3
     #   with:
