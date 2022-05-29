@@ -19,6 +19,7 @@ runs:
       uses: actions/download-artifact@v3
       with:
         name: linux-binary
+        path: ${{ github.event.repository.name }}.bin
 
     - run: tar xvf dist.tar.gz
       shell: bash
@@ -50,5 +51,5 @@ runs:
       with:
         repo_token: ${{ github.token }}
         tag: ${{ github.ref }}
-        file: ${{ github.event.repository.name }}.dist/${{ github.event.repository.name }}
+        file: ${{ github.event.repository.name }}.bin
         asset_name: ${{ github.event.repository.name }}

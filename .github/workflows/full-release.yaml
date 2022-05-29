@@ -14,7 +14,7 @@ jobs:
 
   create_github_release:
     runs-on: ubuntu-20.04
-    #needs: [wheels, linux, windows]
+    needs: [wheels, linux, windows]
     steps:
       - uses: actions/checkout@v2
       - name: Deploy frontend
