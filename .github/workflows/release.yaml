@@ -3,6 +3,7 @@ on: push
 
 jobs:
   build-windows:
+    runs-on: ubuntu-20.04
     needs: [windows-build]
     steps:
       - run: echo ok
