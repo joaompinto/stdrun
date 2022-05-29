@@ -12,13 +12,15 @@ jobs:
     uses: ./.github/workflows/wheels-build.yaml
 
 
-  build_all:
+  create_github_release:
     runs-on: ubuntu-20.04
     needs: wheels #[wheels, linux, windows]
     steps:
       - uses: actions/checkout@v2
       - name: Deploy frontend
         uses: ./.github/actions/github-release
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
   # notify:
   #   needs: build_all
