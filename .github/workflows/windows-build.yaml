@@ -1,0 +1,13 @@
+name: Win32Sample GitHub Release
+  on: push
+
+jobs:
+  create_release:
+    name: Create GitHub Release
+    runs-on: windows-2019
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        with:
+          python-version: '3.10'
+           architecture: x64
