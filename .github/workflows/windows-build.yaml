@@ -13,5 +13,5 @@ jobs:
           python-version: '3.10'
           architecture: x64
       - run: |
-          pip install Nuitka
-          python -m nuitka --debug --assume-yes-for-downloads --onefile stdrun
+          pip install Nuitka zstandard
+          python -m nuitka --assume-yes-for-downloads --onefile stdrun
