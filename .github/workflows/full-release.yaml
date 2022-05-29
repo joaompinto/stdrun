@@ -27,3 +27,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Create Pypi Release
         uses: ./.github/actions/pypi-release
+        with:
+          pypi_api_token: ${{ secrets.PYPI_API_TOKEN }}
