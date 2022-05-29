@@ -4,17 +4,17 @@ on:
   workflow_call:
 
 jobs:
-  # windows:
-  #   uses: ./.github/workflows/windows-build.yaml
-  # linux:
-  #   uses: ./.github/workflows/linux-build.yaml
+  windows:
+    uses: ./.github/workflows/windows-build.yaml
+  linux:
+    uses: ./.github/workflows/linux-build.yaml
   wheels:
     uses: ./.github/workflows/wheels-build.yaml
 
 
   create_github_release:
     runs-on: ubuntu-20.04
-    needs: wheels #[wheels, linux, windows]
+    needs: [wheels, linux, windows]
     steps:
       - uses: actions/checkout@v2
       - name: Deploy frontend

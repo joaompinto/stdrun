@@ -1,9 +1,5 @@
 name: "Deploy Frontend to S3"
 description: "Builds and deploys the React frontend to AWS S3"
-inputs:
-  github_token:
-    required: true
-    description: "The github token"
 
 runs:
   using: "composite"
@@ -20,7 +16,7 @@ runs:
     - uses: actions/create-release@v1.0.0
       id: create_release
       env:
-        GITHUB_TOKEN: ${{ inputs.github_token }}
+        GITHUB_TOKEN: ${{ github.token }}
       with:
         tag_name: ${{ github.ref }}
         release_name: ${{ github.ref }}
@@ -33,16 +29,7 @@ runs:
         tag: ${{ github.ref }}
         file_glob: true
         file: dist/*.whl
-    # - name: Create GitHub Release
-    #   shell: bash
-    #   uses: actions/create-release@v1.0.0
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   with:
-    #     tag_name: ${{ github.ref }}
-    #     release_name: ${{ github.ref }}
-    #     draft: false
-    #     prerelease: false
+
 
     # - name: Download a single artifact
     #   uses: actions/download-artifact@v3
