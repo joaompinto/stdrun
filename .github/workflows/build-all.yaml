@@ -4,10 +4,10 @@ on:
   workflow_call:
 
 jobs:
-  windows:
-    uses: ./.github/workflows/windows-build.yaml
-  linux:
-    uses: ./.github/workflows/linux-build.yaml
+  # windows:
+  #   uses: ./.github/workflows/windows-build.yaml
+  # linux:
+  #   uses: ./.github/workflows/linux-build.yaml
   wheels:
     uses: ./.github/workflows/wheels-build.yaml
 
