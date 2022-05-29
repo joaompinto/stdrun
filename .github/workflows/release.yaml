@@ -4,3 +4,5 @@ on: push
 jobs:
   build-windows:
     needs: [windows-build]
+    steps:
+      run: echo ok
