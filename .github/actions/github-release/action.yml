@@ -10,6 +10,9 @@ runs:
       with:
         name: wheels-data
 
+    - run: tar xvf dist.tar.gz
+      shell: bash
+
     - name: Download the windows exe
       uses: actions/download-artifact@v3
       with:
@@ -22,7 +25,7 @@ runs:
         path: ${{ github.event.repository.name }}.bin
 
     - run: tar xvf dist.tar.gz
-      shell: bash
+      shell: ls -R
 
     - uses: actions/create-release@v1.0.0
       id: create_release
