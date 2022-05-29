@@ -3,7 +3,7 @@ on: push
 
 jobs:
   windows-build:
-    uses: ./.github/workflows/windows-build.yml
+    uses: ./.github/workflows/windows-build.yaml
 
   build-windows:
     runs-on: ubuntu-20.04
