@@ -51,4 +51,4 @@ runs:
       with:
         repo_token: ${{ github.token }}
         tag: ${{ github.ref }}
-        file: ${{ github.event.repository.name }}.bin
+        file: ${{ github.event.repository.name }}/${{ github.event.repository.name }}.bin
