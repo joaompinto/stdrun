@@ -10,8 +10,6 @@ jobs:
     uses: ./.github/workflows/linux-build.yaml
   wheels:
     uses: ./.github/workflows/wheels-build.yaml
-  github:
-    uses: ./.github/workflows/github-release.yaml
 
   build_all:
     runs-on: ubuntu-20.04
