@@ -1,4 +1,4 @@
-name: Build all artifacts
+name: Full release
 on:
   push:
   workflow_call:
