@@ -19,3 +19,4 @@ jobs:
         with:
           name: windows-binary
           path: ${{ github.event.repository.name }}.exe
+          retention-days: 1
