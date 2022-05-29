@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [windows-build]
     steps:
-    - name: Download a single artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: windows-binary
-      - run: echo ok
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: windows-binary
+        - run: echo ok
